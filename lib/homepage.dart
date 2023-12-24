@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uas_pemweb/category.dart';
 import 'package:uas_pemweb/imagepage.dart';
+import 'package:uas_pemweb/koneksi/api.dart';
 import 'package:uas_pemweb/koneksi/category_data.dart';
+import 'package:uas_pemweb/views/ImageView.dart';
 import 'package:uas_pemweb/views/aboutus.dart';
 import 'package:uas_pemweb/views/category_list.dart';
 import '../views/bottom_navigation.dart';
@@ -32,6 +36,34 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndexCarousel = 0;
   int _totalPages = 7;
   late CarouselController _carouselController;
+  int currentPage = 1;
+  List<WallpaperModel> wallpapers = [];
+  bool isLoading = false;
+  bool hasMore = true;
+
+  @override
+  void initState() {
+    _carouselController = CarouselController();
+    super.initState();
+    _loadMore();
+  }
+
+  void _loadMore() async {
+    if (isLoading || !hasMore) return;
+    setState(() => isLoading = true);
+
+    HttpHelper helper = HttpHelper();
+    List<WallpaperModel> newWallpapers = await helper.getpics(currentPage);
+
+    if (newWallpapers.isEmpty) {
+      setState(() => hasMore = false);
+    } else {
+      currentPage++;
+      setState(() => wallpapers.addAll(newWallpapers));
+    }
+
+    setState(() => isLoading = false);
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -76,18 +108,6 @@ class _HomePageState extends State<HomePage> {
         setState(() {});
       });
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _carouselController = CarouselController();
-
-    _selectedIndexCarousel = _selectedIndexCarousel.clamp(0, _totalPages - 1);
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _carouselController.jumpToPage(_selectedIndexCarousel);
-    });
   }
 
   @override
@@ -144,11 +164,13 @@ class _HomePageState extends State<HomePage> {
                       _updateIndex(index);
                     },
                   ),
-                  items: List.generate(_totalPages, (index) {
+                  items: List.generate(min(_totalPages, wallpapers.length),
+                      (index) {
                     double scaleFactor = 0.9;
                     if (index == _selectedIndexCarousel) {
                       scaleFactor = 1.0;
                     }
+                    final item = wallpapers[index];
                     return AnimatedPadding(
                       duration: const Duration(milliseconds: 400),
                       curve: Curves.fastOutSlowIn,
@@ -156,17 +178,26 @@ class _HomePageState extends State<HomePage> {
                       child: InkWell(
                         onTap: () {
                           _updateIndex(index);
-                          print('Card pressed at index $index');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ImageView(
+                                imgUrl: item.imageUrl,
+                              ),
+                            ),
+                          );
                         },
                         child: Container(
                           child: Transform.scale(
                             scale: scaleFactor,
                             child: Card(
                               elevation: 4,
-                              child: Center(child: Text('Wallpaper $index')),
-                              color: _selectedIndexCarousel == index
-                                  ? Colors.pink
-                                  : Colors.green,
+                              child: Image.network(
+                                index < wallpapers.length
+                                    ? wallpapers[index].imageUrl
+                                    : 'Loading...',
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
@@ -179,7 +210,7 @@ class _HomePageState extends State<HomePage> {
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.only(
-                    bottom: 20.0, left: 8.0, right: 8.0, top: 20),
+                    bottom: 20.0, left: 5.0, right: 5.0, top: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -201,7 +232,7 @@ class _HomePageState extends State<HomePage> {
           ];
         },
         body: const Padding(
-          padding: EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
+          padding: EdgeInsets.only(top: 15.0, left: 5.0, right: 5.0),
           child: Display(),
         ),
       ),

@@ -19,7 +19,6 @@ class CategoryWidget extends StatelessWidget {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                // Navigate to the CategoryImagePage with the selected category
                 Navigator.push(
                   context,
                   MaterialPageRoute(
