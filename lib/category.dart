@@ -15,7 +15,7 @@ class CategoryWidget extends StatelessWidget {
         child: ListView.builder(
           padding: const EdgeInsets.only(left: 10.0),
           scrollDirection: Axis.horizontal,
-          itemCount: boxes.length,
+          itemCount: 4,
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {

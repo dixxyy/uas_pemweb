@@ -45,6 +45,8 @@ dependencies:
   path_provider: ^2.1.1
   permission_handler: ^11.0.1
   shared_preferences: ^2.2.2
+  smooth_page_indicator: ^1.1.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -69,11 +71,21 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/wallpapers/anime.jpg
     - lib/wallpapers/game.jpg
+    - lib/wallpapers/anime.jpg
+    - lib/wallpapers/architecture.jpg
+    - lib/wallpapers/art.jpg
+    - lib/wallpapers/fashion.jpg
+    - lib/wallpapers/fitness.jpg
+    - lib/wallpapers/food.jpg
+    - lib/wallpapers/homedecor.jpg
+    - lib/wallpapers/movies.jpg
     - lib/wallpapers/music.jpeg
     - lib/wallpapers/nature.jpg
-  #   - images/a_dot_ham.jpeg
+    - lib/wallpapers/photography.jpg
+    - lib/wallpapers/skincare.jpg
+    - lib/wallpapers/sport.jpg
+    - lib/wallpapers/travel.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -6,6 +6,8 @@ import 'package:uas_pemweb/views/aboutus.dart';
 import 'package:uas_pemweb/views/category_list.dart';
 import '../views/bottom_navigation.dart';
 import '../views/favorite_view.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,9 +18,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late PageController _pageController;
-  int _totalPages = 10; // Jumlah total halaman wallpaper
-  bool _pageHasChangedManually = false;
   int _selectedIndex = 0;
+  int _selectedIndexCarousel = 0;
+  int _totalPages = 7; // Adjust the total number of pages as needed
+  late CarouselController _carouselController;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -29,7 +32,7 @@ class _HomePageState extends State<HomePage> {
         if (_selectedIndex == 0) {
           // Navigate to Home
         } else if (_selectedIndex == 1) {
-          // Navigate to FavoriteView
+          // Navigate to CategoryList
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => const CategoryList()),
@@ -52,6 +55,35 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void _updateIndex(int index) {
+    if (index >= 0 && index < _totalPages) {
+      setState(() {
+        _selectedIndexCarousel = index;
+      });
+      _carouselController.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.fastOutSlowIn,
+      );
+      Future.delayed(const Duration(milliseconds: 500), () {
+        setState(() {});
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _carouselController = CarouselController();
+
+    // Ensure _selectedIndexCarousel is within bounds
+    _selectedIndexCarousel = _selectedIndexCarousel.clamp(0, _totalPages - 1);
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      _carouselController.jumpToPage(_selectedIndexCarousel);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,57 +99,95 @@ class _HomePageState extends State<HomePage> {
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
+            SliverAppBar(
+              expandedHeight: 50,
+              floating: false,
+              pinned: false,
+              flexibleSpace: FlexibleSpaceBar(
+                titlePadding: EdgeInsets.only(bottom: 20, left: 20),
+                title: Text(
+                  'Recommended For You',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 320,
-                child: PageView.builder(
-                  itemCount: 10,
-                  controller:
-                      PageController(viewportFraction: 0.5, initialPage: 3),
-                  // onPageChanged: (index) => setState(() => _index = index),
-                  itemBuilder: (context, index) {
-                    var _index;
+                height: 400,
+                width: 300,
+                child: CarouselSlider(
+                  carouselController: _carouselController,
+                  options: CarouselOptions(
+                    viewportFraction: 0.7,
+                    aspectRatio: 9 / 16,
+                    enlargeCenterPage: false,
+                    onPageChanged: (index, reason) {
+                      _updateIndex(index);
+                    },
+                  ),
+                  items: List.generate(_totalPages, (index) {
+                    double scaleFactor = 0.9;
+                    if (index == _selectedIndexCarousel) {
+                      scaleFactor = 1.0;
+                    }
                     return AnimatedPadding(
                       duration: const Duration(milliseconds: 400),
                       curve: Curves.fastOutSlowIn,
-                      padding: _index == index
-                          ? EdgeInsets.only()
-                          : EdgeInsets.only(
-                              top: 8.0, bottom: 8.0, left: 10.0, right: 10.0),
+                      padding: EdgeInsets.symmetric(horizontal: 10.0),
                       child: InkWell(
                         onTap: () {
-                          print('Card di tekan pada indeks $index');
+                          _updateIndex(index);
+                          print('Card pressed at index $index');
                         },
                         child: Container(
-                          child: Column(
-                            children: [
-                              Expanded(
-                                child: Card(
-                                  elevation: 4,
-                                  child: Center(child: Text('Wallpaper')),
-                                  color: Colors.green,
-                                ),
-                              ),
-                              Text(
-                                'Text at the bottom',
-                                style: TextStyle(fontSize: 16.0),
-                              ),
-                            ],
+                          child: Transform.scale(
+                            scale: scaleFactor,
+                            child: Card(
+                              elevation: 4,
+                              child: Center(child: Text('Wallpaper $index')),
+                              color: _selectedIndexCarousel == index
+                                  ? Colors.pink
+                                  : Colors.black,
+                            ),
                           ),
                         ),
                       ),
                     );
-                  },
+                  }),
                 ),
               ),
             ),
-            CategoryWidget(
-                boxes: boxes), //Memanggil CategoryWidget dari categoryhp.dart
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    bottom: 20.0, left: 8.0, right: 8.0, top: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 5),
+                    AnimatedSmoothIndicator(
+                      activeIndex: _selectedIndexCarousel % _totalPages,
+                      count: _totalPages,
+                      effect:
+                          ExpandingDotsEffect(dotWidth: 7.5, dotHeight: 7.5),
+                      onDotClicked: (index) {
+                        _updateIndex(index);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // CategoryWidget(boxes: boxes), // Note: You need to define 'boxes'
           ];
         },
         body: const Padding(
           padding: EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-          child: Display(),
+          child: Display(), // Note: You need to define 'Display'
         ),
       ),
       bottomNavigationBar: BottomNavigationBarWidget(
