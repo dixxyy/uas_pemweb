@@ -62,9 +62,8 @@ class _CategoryListState extends State<CategoryList> {
       appBar: AppBar(
         title: const Text(
           'Category List',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(),
         ),
-        backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
       ),
@@ -120,6 +119,13 @@ class _CategoryListState extends State<CategoryList> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black,
+                                    offset: Offset(1.7, 1.2),
+                                    blurRadius: 0.9,
+                                  ),
+                                ],
                               ),
                             ),
                           ],

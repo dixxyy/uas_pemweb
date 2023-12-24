@@ -65,6 +65,13 @@ class CategoryWidget extends StatelessWidget {
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black,
+                                      offset: Offset(1.7, 1.2),
+                                      blurRadius: 0.9,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],

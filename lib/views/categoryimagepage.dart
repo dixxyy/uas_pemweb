@@ -102,6 +102,19 @@ class ImageBottom extends StatelessWidget {
   }
 }
 
+Widget buildErrorGrid() {
+  return const Center(
+    child: Text(
+      'Error loading images.',
+      style: TextStyle(
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+        color: Colors.white38,
+      ),
+    ),
+  );
+}
+
 class _CategoryImagePageState extends State<CategoryImagePage> {
   late ScrollController _scrollController;
   late List<WallpaperModel>
@@ -193,6 +206,13 @@ class _CategoryImagePageState extends State<CategoryImagePage> {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
+                          shadows: [
+                            Shadow(
+                              color: Colors.black,
+                              offset: Offset(1.7, 1.2),
+                              blurRadius: 0.9,
+                            ),
+                          ],
                           fontWeight: FontWeight.bold,
                         ),
                       ),

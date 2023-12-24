@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:uas_pemweb/category.dart';
 import 'package:uas_pemweb/imagepage.dart';
 import 'package:uas_pemweb/koneksi/category_data.dart';
@@ -8,6 +9,16 @@ import '../views/bottom_navigation.dart';
 import '../views/favorite_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import '../dark_mode/theme_provider.dart';
+import '../dark_mode/theme_mode.dart';
+
+Widget _buildIcon(BuildContext context) {
+  ThemeData themeData = Provider.of<ThemeProvider>(context).themeData;
+  print("Current theme: $themeData");
+  return themeData == AppTheme.darkMode
+      ? Icon(Icons.nightlight_round)
+      : Icon(Icons.wb_sunny);
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,10 +28,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late PageController _pageController;
   int _selectedIndex = 0;
   int _selectedIndexCarousel = 0;
-  int _totalPages = 7; // Adjust the total number of pages as needed
+  int _totalPages = 7;
   late CarouselController _carouselController;
 
   void _onItemTapped(int index) {
@@ -28,11 +38,8 @@ class _HomePageState extends State<HomePage> {
       if (_selectedIndex != index) {
         _selectedIndex = index;
 
-        // Handle navigation based on the tapped index
         if (_selectedIndex == 0) {
-          // Navigate to Home
         } else if (_selectedIndex == 1) {
-          // Navigate to CategoryList
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => const CategoryList()),
@@ -76,10 +83,9 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _carouselController = CarouselController();
 
-    // Ensure _selectedIndexCarousel is within bounds
     _selectedIndexCarousel = _selectedIndexCarousel.clamp(0, _totalPages - 1);
 
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _carouselController.jumpToPage(_selectedIndexCarousel);
     });
   }
@@ -92,7 +98,17 @@ class _HomePageState extends State<HomePage> {
           'Wallpaper App',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.white,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: IconButton(
+              icon: _buildIcon(context),
+              onPressed: () {
+                context.read<ThemeProvider>().toggleTheme();
+              },
+            ),
+          ),
+        ],
         elevation: 0,
         centerTitle: true,
       ),
@@ -106,12 +122,11 @@ class _HomePageState extends State<HomePage> {
               flexibleSpace: FlexibleSpaceBar(
                 titlePadding: EdgeInsets.only(bottom: 20, left: 20),
                 title: Text(
-                  'Recommended For You',
+                  'Recommended For You!',
                   style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red),
                 ),
               ),
             ),
@@ -151,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                               child: Center(child: Text('Wallpaper $index')),
                               color: _selectedIndexCarousel == index
                                   ? Colors.pink
-                                  : Colors.black,
+                                  : Colors.green,
                             ),
                           ),
                         ),
@@ -182,12 +197,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            // CategoryWidget(boxes: boxes), // Note: You need to define 'boxes'
+            CategoryWidget(boxes: boxes),
           ];
         },
         body: const Padding(
           padding: EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-          child: Display(), // Note: You need to define 'Display'
+          child: Display(),
         ),
       ),
       bottomNavigationBar: BottomNavigationBarWidget(
