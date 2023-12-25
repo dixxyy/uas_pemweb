@@ -23,7 +23,7 @@ class AboutPageState extends State<AboutPage> {
     },
     {
       'title': 'Version of Wallpaper App',
-      'subtitle': '0.8.3',
+      'subtitle': '1.0.0',
       'icon': Icons.info,
     },
     {
@@ -105,50 +105,154 @@ class AboutPageState extends State<AboutPage> {
     String title = info['title'] as String;
     String subtitle = info['subtitle'] as String;
 
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(title),
-          content: Text(subtitle),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Close'),
-            ),
-          ],
+    switch (title) {
+      case 'About This App':
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(title),
+              content: Text(
+                  "Wallpaper App adalah aplikasi yang menyediakan beragam gambar latar belakang berkualitas tinggi untuk personalisasi layar perangkat Anda. Temukan pilihan menarik dari alam, seni, dan banyak kategori lainnya dalam satu aplikasi mudah digunakan."),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Close'),
+                ),
+              ],
+            );
+          },
         );
-      },
-    );
-  }
-
-  void _showDevelopersDialog(
-      BuildContext context, List<String> developersList) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Developers'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: developersList.map((developer) {
-              return Text(developer);
-            }).toList(),
-          ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Close'),
-            ),
-          ],
+        break;
+      case 'Version of Wallpaper App':
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(title),
+              content: Text(subtitle),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Close'),
+                ),
+              ],
+            );
+          },
         );
-      },
-    );
+        break;
+      case 'Privacy Policy':
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              title: Text(title),
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Last Updated: 25 Desember 2023',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Information Collection and Use\n'
+                    'Aplikasi kami tidak mengumpulkan informasi pribadi apa pun dari pengguna.\n\n'
+                    'Log Data\n'
+                    'Ketika Anda menggunakan aplikasi kami, kami tidak mengumpulkan data dan informasi melalui layanan pihak ketiga yang digunakan.\n\n'
+                    'Changes to This Privacy Policy\n'
+                    'Kami dapat memperbarui Kebijakan Privasi kami dari waktu ke waktu. Perubahan akan diumumkan dengan memperbarui tanggal "Last Updated" di atas.\n\n'
+                    'Contact Us\n'
+                    'Jika Anda memiliki pertanyaan atau saran mengenai Kebijakan Privasi kami, silakan hubungi kami di [Alamat Email atau Kontak Lainnya].\n\n'
+                    'Dengan menggunakan aplikasi kami, Anda setuju dengan Kebijakan Privasi kami.',
+                  ),
+                ],
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Close'),
+                ),
+              ],
+            );
+          },
+        );
+        break;
+      case 'Terms and Conditions':
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              title: Text(title),
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Last Updated: 25 Desember 2023',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Information Collection and Use\n'
+                    'Aplikasi kami tidak mengumpulkan informasi pribadi apa pun dari pengguna.\n\n'
+                    'Log Data\n'
+                    'Ketika Anda menggunakan aplikasi kami, kami tidak mengumpulkan data dan informasi melalui layanan pihak ketiga yang digunakan.\n\n'
+                    'Changes to This Privacy Policy\n'
+                    'Kami dapat memperbarui Kebijakan Privasi kami dari waktu ke waktu. Perubahan akan diumumkan dengan memperbarui tanggal "Last Updated" di atas.\n\n'
+                    'Contact Us\n'
+                    'Jika Anda memiliki pertanyaan atau saran mengenai Kebijakan Privasi kami, silakan hubungi kami di [Alamat Email atau Kontak Lainnya].\n\n'
+                    'Dengan menggunakan aplikasi kami, Anda setuju dengan Kebijakan Privasi kami.',
+                  ),
+                ],
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Close'),
+                ),
+              ],
+            );
+          },
+        );
+        break;
+      default:
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              title: Text(title),
+              content: Text(subtitle),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Close'),
+                ),
+              ],
+            );
+          },
+        );
+    }
   }
 
   @override
@@ -216,4 +320,30 @@ class AboutPageState extends State<AboutPage> {
       ),
     );
   }
+}
+
+void _showDevelopersDialog(BuildContext context, List<String> developersList) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Developers'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: developersList.map((developer) {
+            return Text(developer);
+          }).toList(),
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Close'),
+          ),
+        ],
+      );
+    },
+  );
 }

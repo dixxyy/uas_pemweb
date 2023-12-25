@@ -7,7 +7,7 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'dart:typed_data';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
-import '../views/favorite.dart';
+import '../koneksi/favorite.dart';
 import 'dart:ui';
 
 class ImageView extends StatefulWidget {

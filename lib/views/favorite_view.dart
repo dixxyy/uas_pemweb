@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:uas_pemweb/homepage.dart';
 import 'package:uas_pemweb/views/aboutus.dart';
 import 'package:uas_pemweb/views/category_list.dart';
-import 'favorite.dart';
+import '../koneksi/favorite.dart';
 import 'ImageView.dart';
 import '../views/bottom_navigation.dart';
 
