@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:uas_pemweb/homepage.dart';
+import '../homepage/homepage.dart';
 import 'package:uas_pemweb/views/aboutus.dart';
 import 'package:uas_pemweb/views/category_list.dart';
 import '../koneksi/favorite.dart';

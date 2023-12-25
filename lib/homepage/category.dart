@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../views/categoryimagepage.dart'; // Import your CategoryImagePage
+import '../views/categoryimagepage.dart';
 import '../koneksi/category_data.dart';
 
 class CategoryWidget extends StatelessWidget {

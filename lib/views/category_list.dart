@@ -30,7 +30,6 @@ class _CategoryListState extends State<CategoryList> {
       if (_selectedIndex != index) {
         _selectedIndex = index;
 
-        // Handle navigation based on the tapped index
         if (_selectedIndex == 0) {
           Navigator.pushAndRemoveUntil(
             context,
@@ -38,7 +37,7 @@ class _CategoryListState extends State<CategoryList> {
             (route) => false,
           );
         } else if (_selectedIndex == 1) {
-          // Category
+          // Category Index
         } else if (_selectedIndex == 2) {
           Navigator.pushAndRemoveUntil(
             context,
@@ -74,7 +73,7 @@ class _CategoryListState extends State<CategoryList> {
             crossAxisCount: 2,
             crossAxisSpacing: 1.1,
             mainAxisSpacing: 1.1,
-            childAspectRatio: 7 / 3, //Mengatur size setiap Box
+            childAspectRatio: 7 / 3,
           ),
           itemCount: boxes.length,
           itemBuilder: (context, index) {

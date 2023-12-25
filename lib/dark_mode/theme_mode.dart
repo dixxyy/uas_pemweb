@@ -22,7 +22,6 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       primaryColor: isDarkMode ? darkMode.primaryColor : lightMode.primaryColor,
-      // Add other theme properties based on the mode
     );
   }
 }

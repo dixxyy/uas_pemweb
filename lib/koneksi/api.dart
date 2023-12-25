@@ -12,11 +12,9 @@ class HttpHelper {
         List<dynamic> data = json.decode(response.body)['data'];
         return data.map((json) => WallpaperModel.fromJson(json)).toList();
       } else {
-        // Tangani situasi ketika tidak ada data atau kesalahan lain
         return [];
       }
     } catch (e) {
-      // Tangani exception jaringan atau lainnya
       return [];
     }
   }
@@ -33,11 +31,9 @@ class HttpHelper {
         List<dynamic> data = json.decode(response.body)['data'];
         return data.map((json) => WallpaperModel.fromJson(json)).toList();
       } else {
-        // Handle the situation when there is no data or other errors
         return [];
       }
     } catch (e) {
-      // Handle network or other exceptions
       return [];
     }
   }
