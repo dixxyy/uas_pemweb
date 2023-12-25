@@ -21,46 +21,52 @@ class AboutPageState extends State<AboutPage> {
       'subtitle': 'Information about the application',
       'icon': Icons.phone_android_outlined,
     },
-    {
-      'title': 'Version of Wallpaper App',
-      'subtitle': '1.0.0',
-      'icon': Icons.info,
-    },
+    // {
+    //   'title': 'Version of Wallpaper App',
+    //   'subtitle': '1.0.0',
+    //   'icon': Icons.info,
+    // },
     {
       'title': 'Developers',
-      'subtitle': 'Kelompok 9',
+      'subtitle': 'Kelompok 9 - Intensitas Kerja (Berurutan dari atas kebawah)',
       'icon': Icons.person,
       'developersList': [
-        'Abdul Aziz',
-        'Ilham Ambia',
-        'Devin Wijaya',
-        'Dicky Saputra',
-        'Rojak Kurniawan',
-        'Aditya Sastraatmaja',
-        'Ahmad Rafi Kannajmi',
-        'Muhammad Alviansyah',
-        'Daffa Dzaky Syahbani',
-        'Muhammad Damar Firdaus',
-        'Muhammad Rifqi Arrasyid',
-        'Muhammad Rizqi Fadhillah',
+        "Abdul Aziz",
+        "Rojak Kurniawan",
+        "Ahmad Rafi Kannajmi",
+        "Muhammad Rizqi Fadhillah",
+        "Dicky Saputra",
+        "Devin Wijaya",
+        "Muhammad Damar Firdaus",
+        "Ilham Ambia",
+        "Aditya Sastraatmaja",
+        "Muhammad Rifqi Arrasyid",
+        "Daffa Dzaky Syahbani",
+        "Muhammad Alviansyah",
       ],
     },
     {
-      'title': 'Gitlab',
+      'title': 'Github Front End',
       'subtitle': 'Tap to open',
       'icon': Icons.code,
       'link': 'https://github.com/kilyfa/FE_WallpaperApp_UAS',
+    },
+    {
+      'title': 'Github Back End',
+      'subtitle': 'Tap to open',
+      'icon': Icons.code,
+      'link': 'https://github.com/rojakkurniawan/BE_WallpaperApp_UAS',
     },
     {
       'title': 'Privacy Policy',
       'subtitle': 'Read our privacy policy',
       'icon': Icons.security,
     },
-    {
-      'title': 'Terms and Conditions',
-      'subtitle': 'Check the terms and conditions',
-      'icon': Icons.assignment,
-    },
+    // {
+    //   'title': 'Terms and Conditions',
+    //   'subtitle': 'Check the terms and conditions',
+    //   'icon': Icons.assignment,
+    // },
   ];
 
   void _onItemTapped(int index) {
@@ -126,25 +132,25 @@ class AboutPageState extends State<AboutPage> {
           },
         );
         break;
-      case 'Version of Wallpaper App':
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text(title),
-              content: Text(subtitle),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Close'),
-                ),
-              ],
-            );
-          },
-        );
-        break;
+      // case 'Version of Wallpaper App':
+      //   showDialog(
+      //     context: context,
+      //     builder: (BuildContext context) {
+      //       return AlertDialog(
+      //         title: Text(title),
+      //         content: Text(subtitle),
+      //         actions: <Widget>[
+      //           TextButton(
+      //             onPressed: () {
+      //               Navigator.of(context).pop();
+      //             },
+      //             child: const Text('Close'),
+      //           ),
+      //         ],
+      //       );
+      //     },
+      //   );
+      //   break;
       case 'Privacy Policy':
         showDialog(
           context: context,
@@ -187,48 +193,48 @@ class AboutPageState extends State<AboutPage> {
           },
         );
         break;
-      case 'Terms and Conditions':
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              title: Text(title),
-              content: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Last Updated: 25 Desember 2023',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Information Collection and Use\n'
-                    'Aplikasi kami tidak mengumpulkan informasi pribadi apa pun dari pengguna.\n\n'
-                    'Log Data\n'
-                    'Ketika Anda menggunakan aplikasi kami, kami tidak mengumpulkan data dan informasi melalui layanan pihak ketiga yang digunakan.\n\n'
-                    'Changes to This Privacy Policy\n'
-                    'Kami dapat memperbarui Kebijakan Privasi kami dari waktu ke waktu. Perubahan akan diumumkan dengan memperbarui tanggal "Last Updated" di atas.\n\n'
-                    'Contact Us\n'
-                    'Dengan menggunakan aplikasi kami, Anda setuju dengan Kebijakan Privasi kami.',
-                  ),
-                ],
-              ),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Close'),
-                ),
-              ],
-            );
-          },
-        );
-        break;
+      // case 'Terms and Conditions':
+      //   showDialog(
+      //     context: context,
+      //     builder: (BuildContext context) {
+      //       return AlertDialog(
+      //         shape: RoundedRectangleBorder(
+      //           borderRadius: BorderRadius.circular(15.0),
+      //         ),
+      //         title: Text(title),
+      //         content: const Column(
+      //           crossAxisAlignment: CrossAxisAlignment.start,
+      //           mainAxisSize: MainAxisSize.min,
+      //           children: [
+      //             Text(
+      //               'Last Updated: 25 Desember 2023',
+      //               style: TextStyle(fontWeight: FontWeight.bold),
+      //             ),
+      //             SizedBox(height: 10),
+      //             Text(
+      //               'Information Collection and Use\n'
+      //               'Aplikasi kami tidak mengumpulkan informasi pribadi apa pun dari pengguna.\n\n'
+      //               'Log Data\n'
+      //               'Ketika Anda menggunakan aplikasi kami, kami tidak mengumpulkan data dan informasi melalui layanan pihak ketiga yang digunakan.\n\n'
+      //               'Changes to This Privacy Policy\n'
+      //               'Kami dapat memperbarui Kebijakan Privasi kami dari waktu ke waktu. Perubahan akan diumumkan dengan memperbarui tanggal "Last Updated" di atas.\n\n'
+      //               'Contact Us\n'
+      //               'Dengan menggunakan aplikasi kami, Anda setuju dengan Kebijakan Privasi kami.',
+      //             ),
+      //           ],
+      //         ),
+      //         actions: <Widget>[
+      //           TextButton(
+      //             onPressed: () {
+      //               Navigator.of(context).pop();
+      //             },
+      //             child: const Text('Close'),
+      //           ),
+      //         ],
+      //       );
+      //     },
+      //   );
+      //   break;
       default:
         showDialog(
           context: context,
@@ -268,7 +274,6 @@ class AboutPageState extends State<AboutPage> {
           width: 320,
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
-            color: Colors.white,
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: ListView(
@@ -276,8 +281,10 @@ class AboutPageState extends State<AboutPage> {
             children: appInfo.map((info) {
               return GestureDetector(
                 onTap: () {
-                  if (info['title'] == 'Gitlab') {
-                    _launchURL(info['link']);
+                  if (info['title'] == 'Github Front End') {
+                    _launchURL(info['link'] as String);
+                  } else if (info['title'] == 'Github Back End') {
+                    _launchURL(info['link'] as String);
                   } else if (info['title'] == 'Developers') {
                     _showDevelopersDialog(context, info['developersList']);
                   } else {
@@ -300,10 +307,13 @@ class AboutPageState extends State<AboutPage> {
                       style: TextStyle(color: Colors.grey[800]),
                     ),
                     subtitle: info['title'] == 'Developers'
-                        ? const Text('Tap to see developers')
+                        ? const Text(
+                            'Kelompok 9 - Intensitas Kerja (Berurutan dari atas kebawah)\n\n(Tap in here)'
+                                as String,
+                            style: TextStyle(color: Colors.black87))
                         : Text(
                             info['subtitle'] as String,
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: TextStyle(color: Colors.grey[800]),
                           ),
                   ),
                 ),
