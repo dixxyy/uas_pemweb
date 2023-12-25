@@ -121,7 +121,7 @@ class _DisplayState extends State<Display> {
               child: Container(
                 padding: const EdgeInsets.all(8.0),
                 alignment: Alignment.center,
-                child: CircularProgressIndicator(),
+                child: const CircularProgressIndicator(),
               ),
             ),
         ],

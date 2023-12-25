@@ -7,7 +7,7 @@ import 'package:uas_pemweb/views/ImageView.dart';
 
 extension StringExtension on String {
   String capitalize() {
-    return "${this[0].toUpperCase()}${this.substring(1)}";
+    return "${this[0].toUpperCase()}${substring(1)}";
   }
 }
 
@@ -31,13 +31,13 @@ String findImagePathByParameter(String parameter) {
 class ImageBottom extends StatelessWidget {
   final List<WallpaperModel>? data;
 
-  ImageBottom({required this.data});
+  const ImageBottom({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return data != null
         ? GridView.builder(
-            padding: EdgeInsets.only(left: 6, right: 6, top: 6),
+            padding: const EdgeInsets.only(left: 6, right: 6, top: 6),
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: data!.length,
@@ -186,7 +186,7 @@ class _CategoryImagePageState extends State<CategoryImagePage> {
               floating: false,
               pinned: true,
               snap: false,
-              actionsIconTheme: IconThemeData(opacity: 0.0),
+              actionsIconTheme: const IconThemeData(opacity: 0.0),
               flexibleSpace: Stack(
                 children: <Widget>[
                   Positioned.fill(
@@ -203,7 +203,7 @@ class _CategoryImagePageState extends State<CategoryImagePage> {
                     child: Center(
                       child: Text(
                         '${widget.category.capitalize()} Images',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
                           shadows: [

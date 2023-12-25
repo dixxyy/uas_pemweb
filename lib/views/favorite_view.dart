@@ -41,7 +41,7 @@ class _FavoriteViewState extends State<FavoriteView> {
         } else if (_selectedIndex == 3) {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => AboutPage()),
+            MaterialPageRoute(builder: (context) => const AboutPage()),
             (route) => false,
           );
         }

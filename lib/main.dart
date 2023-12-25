@@ -24,8 +24,8 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
-          '/': (context) => HomePage(),
-          '/favorite': (context) => FavoriteView(),
+          '/': (context) => const HomePage(),
+          '/favorite': (context) => const FavoriteView(),
         });
   }
 }

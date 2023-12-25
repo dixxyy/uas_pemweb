@@ -55,13 +55,13 @@ class _BlurredImage extends StatelessWidget {
 class _SmolImage extends StatelessWidget {
   final String imgUrl;
 
-  _SmolImage({required this.imgUrl});
+  const _SmolImage({required this.imgUrl});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: ClipRRect(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           // BorderRadius.circular(10), // Set the border radius
           topLeft: Radius.circular(10),
           topRight: Radius.circular(10),
@@ -113,7 +113,7 @@ class _ImageViewState extends State<ImageView> {
         height: 40,
         width: 120,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomRight: Radius.circular(8),
             topRight: Radius.circular(8),
             bottomLeft: Radius.circular(40),
@@ -140,7 +140,7 @@ class _ImageViewState extends State<ImageView> {
               },
             ),
             const SizedBox(width: 8),
-            Text(
+            const Text(
               "Favorite",
               style: TextStyle(color: Colors.white),
             ),
@@ -159,14 +159,14 @@ class _ImageViewState extends State<ImageView> {
         height: 40,
         width: 120,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               bottomRight: Radius.circular(5),
               topRight: Radius.circular(5),
               bottomLeft: Radius.circular(5),
               topLeft: Radius.circular(5)),
           border: Border.all(color: Colors.white, width: 1.0),
         ),
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
@@ -174,7 +174,7 @@ class _ImageViewState extends State<ImageView> {
               size: 20,
               color: Colors.white,
             ),
-            const SizedBox(width: 8),
+            SizedBox(width: 8),
             Text(
               "Download",
               style: TextStyle(color: Colors.white),
@@ -194,7 +194,7 @@ class _ImageViewState extends State<ImageView> {
         height: 40,
         width: 120,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomRight: Radius.circular(40),
             topRight: Radius.circular(40),
             bottomLeft: Radius.circular(9),
@@ -202,7 +202,7 @@ class _ImageViewState extends State<ImageView> {
           ),
           border: Border.all(color: Colors.white, width: 1.0),
         ),
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
@@ -210,7 +210,7 @@ class _ImageViewState extends State<ImageView> {
               size: 20,
               color: Colors.white,
             ),
-            const SizedBox(width: 8),
+            SizedBox(width: 8),
             Text(
               "Set As",
               style: TextStyle(color: Colors.white),
@@ -340,7 +340,7 @@ class _ImageViewState extends State<ImageView> {
           },
         ),
         iconTheme:
-            IconThemeData(color: const Color.fromARGB(255, 255, 255, 255)),
+            const IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
       ),
       body: Container(
         child: Stack(

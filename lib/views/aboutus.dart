@@ -71,7 +71,7 @@ class AboutPageState extends State<AboutPage> {
         if (_selectedIndex == 0) {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => const HomePage()),
             (route) => false,
           );
         } else if (_selectedIndex == 1) {
@@ -112,14 +112,14 @@ class AboutPageState extends State<AboutPage> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text(title),
-              content: Text(
+              content: const Text(
                   "Wallpaper App adalah aplikasi yang menyediakan beragam gambar latar belakang berkualitas tinggi untuk personalisasi layar perangkat Anda. Temukan pilihan menarik dari alam, seni, dan banyak kategori lainnya dalam satu aplikasi mudah digunakan."),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('Close'),
+                  child: const Text('Close'),
                 ),
               ],
             );
@@ -138,7 +138,7 @@ class AboutPageState extends State<AboutPage> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('Close'),
+                  child: const Text('Close'),
                 ),
               ],
             );
@@ -154,7 +154,7 @@ class AboutPageState extends State<AboutPage> {
                 borderRadius: BorderRadius.circular(15.0),
               ),
               title: Text(title),
-              content: Column(
+              content: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -171,7 +171,6 @@ class AboutPageState extends State<AboutPage> {
                     'Changes to This Privacy Policy\n'
                     'Kami dapat memperbarui Kebijakan Privasi kami dari waktu ke waktu. Perubahan akan diumumkan dengan memperbarui tanggal "Last Updated" di atas.\n\n'
                     'Contact Us\n'
-                    'Jika Anda memiliki pertanyaan atau saran mengenai Kebijakan Privasi kami, silakan hubungi kami di [Alamat Email atau Kontak Lainnya].\n\n'
                     'Dengan menggunakan aplikasi kami, Anda setuju dengan Kebijakan Privasi kami.',
                   ),
                 ],
@@ -181,7 +180,7 @@ class AboutPageState extends State<AboutPage> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('Close'),
+                  child: const Text('Close'),
                 ),
               ],
             );
@@ -197,7 +196,7 @@ class AboutPageState extends State<AboutPage> {
                 borderRadius: BorderRadius.circular(15.0),
               ),
               title: Text(title),
-              content: Column(
+              content: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -214,7 +213,6 @@ class AboutPageState extends State<AboutPage> {
                     'Changes to This Privacy Policy\n'
                     'Kami dapat memperbarui Kebijakan Privasi kami dari waktu ke waktu. Perubahan akan diumumkan dengan memperbarui tanggal "Last Updated" di atas.\n\n'
                     'Contact Us\n'
-                    'Jika Anda memiliki pertanyaan atau saran mengenai Kebijakan Privasi kami, silakan hubungi kami di [Alamat Email atau Kontak Lainnya].\n\n'
                     'Dengan menggunakan aplikasi kami, Anda setuju dengan Kebijakan Privasi kami.',
                   ),
                 ],
@@ -224,7 +222,7 @@ class AboutPageState extends State<AboutPage> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('Close'),
+                  child: const Text('Close'),
                 ),
               ],
             );
@@ -246,7 +244,7 @@ class AboutPageState extends State<AboutPage> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('Close'),
+                  child: const Text('Close'),
                 ),
               ],
             );
@@ -259,7 +257,7 @@ class AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'About',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
@@ -268,7 +266,7 @@ class AboutPageState extends State<AboutPage> {
       body: Center(
         child: Container(
           width: 320,
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8.0),
@@ -287,7 +285,7 @@ class AboutPageState extends State<AboutPage> {
                   }
                 },
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 4.0),
+                  margin: const EdgeInsets.symmetric(vertical: 4.0),
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
                     borderRadius: BorderRadius.circular(8.0),
@@ -302,7 +300,7 @@ class AboutPageState extends State<AboutPage> {
                       style: TextStyle(color: Colors.grey[800]),
                     ),
                     subtitle: info['title'] == 'Developers'
-                        ? Text('Tap to see developers')
+                        ? const Text('Tap to see developers')
                         : Text(
                             info['subtitle'] as String,
                             style: TextStyle(color: Colors.grey[600]),
@@ -327,7 +325,7 @@ void _showDevelopersDialog(BuildContext context, List<String> developersList) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('Developers'),
+        title: const Text('Developers'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -340,7 +338,7 @@ void _showDevelopersDialog(BuildContext context, List<String> developersList) {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('Close'),
+            child: const Text('Close'),
           ),
         ],
       );

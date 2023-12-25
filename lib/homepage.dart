@@ -20,8 +20,8 @@ Widget _buildIcon(BuildContext context) {
   ThemeData themeData = Provider.of<ThemeProvider>(context).themeData;
   print("Current theme: $themeData");
   return themeData == AppTheme.darkMode
-      ? Icon(Icons.nightlight_round)
-      : Icon(Icons.wb_sunny);
+      ? const Icon(Icons.nightlight_round)
+      : const Icon(Icons.wb_sunny);
 }
 
 class HomePage extends StatefulWidget {
@@ -34,7 +34,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   int _selectedIndexCarousel = 0;
-  int _totalPages = 7;
+  final int _totalPages = 7;
   late CarouselController _carouselController;
   int currentPage = 1;
   List<WallpaperModel> wallpapers = [];
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
         } else if (_selectedIndex == 3) {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => AboutPage()),
+            MaterialPageRoute(builder: (context) => const AboutPage()),
             (route) => false,
           );
         }
@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
-            SliverAppBar(
+            const SliverAppBar(
               expandedHeight: 50,
               floating: false,
               pinned: false,
@@ -174,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                     return AnimatedPadding(
                       duration: const Duration(milliseconds: 400),
                       curve: Curves.fastOutSlowIn,
-                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: InkWell(
                         onTap: () {
                           _updateIndex(index);
@@ -219,7 +219,7 @@ class _HomePageState extends State<HomePage> {
                       activeIndex: _selectedIndexCarousel % _totalPages,
                       count: _totalPages,
                       effect:
-                          ExpandingDotsEffect(dotWidth: 7.5, dotHeight: 7.5),
+                          const ExpandingDotsEffect(dotWidth: 7.5, dotHeight: 7.5),
                       onDotClicked: (index) {
                         _updateIndex(index);
                       },
