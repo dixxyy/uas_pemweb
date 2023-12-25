@@ -62,7 +62,6 @@ class _SmolImage extends StatelessWidget {
     return Center(
       child: ClipRRect(
         borderRadius: const BorderRadius.only(
-          // BorderRadius.circular(10), // Set the border radius
           topLeft: Radius.circular(10),
           topRight: Radius.circular(10),
         ),
@@ -123,7 +122,6 @@ class _ImageViewState extends State<ImageView> {
             color: Colors.white,
             width: 1.0,
           ),
-          // color: Colors.black54.withOpacity(0.5),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -331,7 +329,6 @@ class _ImageViewState extends State<ImageView> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        // title: const Text('Image View'),
         backgroundColor: Colors.black.withOpacity(0.3),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -351,8 +348,7 @@ class _ImageViewState extends State<ImageView> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 height: 85,
-                color: Colors.black.withOpacity(
-                    0.3), // Set the background color for the entire row
+                color: Colors.black.withOpacity(0.3),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,

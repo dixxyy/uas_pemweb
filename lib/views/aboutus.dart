@@ -308,8 +308,7 @@ class AboutPageState extends State<AboutPage> {
                     ),
                     subtitle: info['title'] == 'Developers'
                         ? const Text(
-                            'Kelompok 9 - Intensitas Kerja (Berurutan dari atas kebawah)\n\n(Tap in here)'
-                                as String,
+                            'Kelompok 9 - Intensitas Kerja (Berurutan dari atas kebawah)\n\n(Tap in here)',
                             style: TextStyle(color: Colors.black87))
                         : Text(
                             info['subtitle'] as String,

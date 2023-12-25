@@ -117,9 +117,8 @@ Widget buildErrorGrid() {
 
 class _CategoryImagePageState extends State<CategoryImagePage> {
   late ScrollController _scrollController;
-  late List<WallpaperModel>
-      _allWallpapers; // Accumulated list of all wallpapers
-  int _currentPage = 1; // Initial page
+  late List<WallpaperModel> _allWallpapers;
+  int _currentPage = 1;
 
   @override
   void initState() {
@@ -128,11 +127,9 @@ class _CategoryImagePageState extends State<CategoryImagePage> {
     _allWallpapers = [];
     _fetchCategoryImages(_currentPage);
 
-    // Listen for scroll events
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
-        // Reached the bottom, load more data
         _loadMoreData();
       }
     });
@@ -144,19 +141,12 @@ class _CategoryImagePageState extends State<CategoryImagePage> {
       List<WallpaperModel> wallpapers =
           await helper.getCategoryPics(page, widget.category);
 
-      // Append the new wallpapers to the accumulated list
       _allWallpapers.addAll(wallpapers);
 
-      setState(() {
-        // Update the UI with the accumulated data
-        // This will trigger a rebuild of the ImageBottom widget
-      });
-    } catch (e) {
-      // Handle exceptions appropriately, e.g., show an error message.
-    }
+      setState(() {});
+    } catch (e) {}
   }
 
-  // Load more data when scrolling to the bottom
   Future<void> _loadMoreData() async {
     setState(() {
       _currentPage++;
@@ -166,7 +156,6 @@ class _CategoryImagePageState extends State<CategoryImagePage> {
   }
 
   Future<void> _handleRefresh() async {
-    // Reset state to initial values
     _currentPage = 1;
     _allWallpapers.clear();
     await _fetchCategoryImages(_currentPage);

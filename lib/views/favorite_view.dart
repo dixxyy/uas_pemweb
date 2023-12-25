@@ -23,7 +23,6 @@ class _FavoriteViewState extends State<FavoriteView> {
       if (_selectedIndex != index) {
         _selectedIndex = index;
 
-        // Handle navigation based on the tapped index
         if (_selectedIndex == 0) {
           Navigator.pushAndRemoveUntil(
             context,
