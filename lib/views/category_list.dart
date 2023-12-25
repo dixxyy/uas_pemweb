@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uas_pemweb/homepage.dart';
+import '../homepage/homepage.dart';
 import 'package:uas_pemweb/views/aboutus.dart';
 import 'package:uas_pemweb/views/categoryimagepage.dart';
 import '../views/favorite_view.dart';
